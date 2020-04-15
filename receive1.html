@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width">
+		<link href="https://fonts.googleapis.com/css?family=Italianno" rel="stylesheet">
+        <title>Memory --- Spieler 1</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+		
+	<div id="score">
+	
+		<table id= "login">
+            <tr>
+                <td>
+                    <div id="receiver-id" style="font-weight: bold;" title="Copy this ID to the input on send.html.">ID:</div>
+                </td>
+            </tr>
+            <tr>
+                <td><div id="status" class="status"></div></td>
+            </tr>
+        </table>
+
+		<div id="outerLayoutPlayer1">
+			<div id="player1" style="visibility:hidden;">
+				<img class="pictureplayers" id= "pictureplayer1"> 
+				<div class="backgroundNametag">
+					<input type="text" class="fname" id="fname1" name="fname1" placeholder="Spieler 1" > 
+				</div>
+				<div class="pointCounter01" id="pointCounter11">
+				
+				</div>
+				<div class="pointCounter02" id="pointCounter12">
+				
+				</div>
+			</div>
+		</div>
+		<div id="outerLayoutPlayer2">
+			<div id="player2" style="visibility:hidden;" >
+				<img class="pictureplayers" id= "pictureplayer2"> 
+				<div class="backgroundNametag">
+					<input type="text" class="fname" id="fname2" name="fname2" placeholder="Spieler 2" > 
+				</div>
+				<div class="pointCounter01" id="pointCounter21">
+				
+				</div>
+				<div class="pointCounter02" id="pointCounter22">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<div id="background" style="visibility:hidden;">
+
+	<p id="headline">Memory</p>
+    <div id="cardPlace">
+		<p class = Cardrow> 
+			<img id= "card11" class= "card"> 
+			<img id= "card12" class= "card"> 
+			<img id= "card13" class= "card"> 
+			<img id= "card14" class= "card"> 
+			<img id= "card15" class= "card"> 
+			<img id= "card16" class= "card"> 
+			<img id= "card17" class= "card"> 
+			<img id= "card18" class= "card"> 
+			<img id= "card19" class= "card"> 
+			<img id= "card110" class= "card"> 
+			<img id= "card111" class= "card"> 
+		</p> 
+		<p class = Cardrow> 
+			<img id= "card21" class= "card"> 
+			<img id= "card22" class= "card"> 
+			<img id= "card23" class= "card"> 
+			<img id= "card24" class= "card"> 
+			<img id= "card25" class= "card"> 
+			<img id= "card26" class= "card"> 
+			<img id= "card27" class= "card"> 
+			<img id= "card28" class= "card"> 
+			<img id= "card29" class= "card"> 
+			<img id= "card210" class= "card"> 
+			<img id= "card211" class= "card"> 
+		</p> 
+		<p class = Cardrow> 
+			<img id= "card31" class= "card"> 
+			<img id= "card32" class= "card"> 
+			<img id= "card33" class= "card"> 
+			<img id= "card34" class= "card"> 
+			<img id= "card35" class= "card"> 
+			<img id= "card36" class= "card"> 
+			<img id= "card37" class= "card"> 
+			<img id= "card38" class= "card"> 
+			<img id= "card39" class= "card"> 
+			<img id= "card310" class= "card"> 
+			<img id= "card311" class= "card"> 
+		</p> 
+		<p class = Cardrow> 
+			<img id= "card41" class= "card"> 
+			<img id= "card42" class= "card"> 
+			<img id= "card43" class= "card"> 
+			<img id= "card44" class= "card"> 
+			<img id= "card45" class= "card"> 
+			<img id= "card46" class= "card"> 
+			<img id= "card47" class= "card"> 
+			<img id= "card48" class= "card"> 
+			<img id= "card49" class= "card"> 
+			<img id= "card410" class= "card"> 
+			<img id= "card411" class= "card"> 
+		</p> 
+		<p class = Cardrow> 
+			<img id= "card51" class= "card"> 
+			<img id= "card52" class= "card"> 
+			<img id= "card53" class= "card"> 
+			<img id= "card54" class= "card"> 
+			<img id= "card55" class= "card"> 
+			<img id= "card56" class= "card"> 
+			<img id= "card57" class= "card"> 
+			<img id= "card58" class= "card"> 
+			<img id= "card59" class= "card"> 
+			<img id= "card510" class= "card"> 
+			<img id= "card511" class= "card"> 
+		</p> 
+		<p class = Cardrow> 
+			<img id= "card61" class= "card"> 
+			<img id= "card62" class= "card"> 
+			<img id= "card63" class= "card"> 
+			<img id= "card64" class= "card"> 
+			<img id= "card65" class= "card"> 
+			<img id= "card66" class= "card"> 
+			<img id= "card67" class= "card"> 
+			<img id= "card68" class= "card"> 
+			<img id= "card69" class= "card"> 
+			<img id= "card610" class= "card"> 
+			<img id= "card611" class= "card"> 
+		</p> 
+	</div>
+</div>
+
+
+        <script src="peer.js"></script>
+        <script type="text/javascript">
+            (function () {
+
+				
+				var cardsSrc = new Array(
+					"Apfel1.jpg", 
+					"Apfel2.jpg", 
+					"Auto1.jpg", 
+					"Auto2.jpg",
+					"Bad1.jpg",
+					"Bad2.jpg",
+					"Bahn1.jpg",
+					"Bahn2.jpg",
+					"Ball1.jpg",
+					"Ball2.jpg",
+					"Baum1.jpg",
+					"Baum2.jpg",
+					"Bild1.jpg",
+					"Bild2.jpg",
+					"Blumen1.jpg",
+					"Blumen2.jpg",
+					"Brezen1.jpg",
+					"Brezen2.jpg",
+					"Bunt1.jpg",
+					"Bunt2.jpg",
+					"Camp1.jpg",
+					"Camp2.jpg",
+					"Code1.jpg",
+					"Code2.jpg",
+					"Dosen1.jpg",
+					"Dosen2.jpg",
+					"Faden1.jpg",
+					"Faden2.jpg",
+					"Farbe1.jpg",
+					"Farbe2.jpg",
+					"Fussball1.jpg",
+					"Fussball2.jpg",
+					"Gogh1.jpg",
+					"Gogh2.jpg",
+					"Kadinsky1.jpg",
+					"Kadinsky2.jpg",
+					"Kranz1.jpg",
+					"Kranz2.jpg",
+					"Kunst1.jpg",
+					"Kunst2.jpg",
+					"Leine1.jpg",
+					"Leine2.jpg",
+					"Mann1.jpg",
+					"Mann2.jpg",
+					"Muschel1.jpg",
+					"Muschel2.jpg",
+					"Musik1.jpg",
+					"Musik2.jpg",
+					"Nuss1.jpg",
+					"Nuss2.jpg",
+					"Pommes1.jpg",
+					"Pommes2.jpg",
+					"Quadrat1.jpg",
+					"Quadrat2.jpg",
+					"Sand1.jpg",
+					"Sand2.jpg", 
+					"Schrift1.jpg",
+					"Schrift2.jpg",
+					"Sterne1.jpg",
+					"Sterne2.jpg",
+					"Suppe1.jpg",
+					"Suppe2.jpg",
+					"Tanne1.jpg",
+					"Tanne2.jpg", 
+					"Uhr1.jpg",
+					"Uhr2.jpg"
+					);
+
+				var numberRows = 6;
+				var numberColumns = 11;
+				
+				//only up here you need to change the variables
+				
+				var player1Ready = false;
+				var player2Ready = false; 
+				var player1Active = true;
+				var player2Active = false; 
+				var scorePlayer1 = 0;
+				var scorePlayer2 = 0;
+				var openCards = 0; 
+				var rowOpen1;
+				var columnOpen1;
+				var rowOpen2;
+				var columnOpen2;  
+				var FivePointsPlayer1 = 0;
+				var FivePointsPlayer2 = 0; 
+				var rowPointsPlayer1 = 1;
+				var rowPointsPlayer2 = 1; 
+				
+				
+                var recvId = document.getElementById("receiver-id");
+                var status = document.getElementById("status");
+				
+						var peer = new Peer({debug: 3, 
+  config: {'iceServers': [
+   { "urls": 'stun:stun.l.google.com:19302' }, {"urls": 'stun:stun.ideasip.com'},
+    { "urls": 'turn:numb.viagenie.ca', "username": 'webrtc@live.com', "credential": 'muazkh', }
+  ]} 
+});
+				var conn; 
+				
+
+
+                /**
+                 * Create the Peer object for our end of the connection.
+                 *
+                 * Sets up callbacks that handle any events related to our
+                 * peer object.
+                 */
+                 function initialize() {
+                    // Create own peer object with connection to shared PeerJS server
+                    
+
+                    peer.on('open', function (id) {
+
+                        console.log('ID: ' + peer.id);
+                        recvId.innerHTML = "ID: " + peer.id;
+                        status.innerHTML = "Awaiting connection...";
+                    });
+					
+                    peer.on('connection', function (connection) {
+						conn = connection; 
+                        console.log("Connected to: " + conn.peer);
+						document.getElementById("player1").style.visibility = "visible"; 
+						document.getElementById("score").removeChild(document.getElementById("login"));
+						giveCardsOnClick();
+                        ready();
+                    });
+
+                    peer.on('error', function (err) {
+                        console.log(err);
+                        alert('' + err);
+                    });
+                };
+
+                /**
+                 * Triggered once a connection has been achieved.
+                 * Defines callbacks to handle incoming data and connection events.
+                 */
+                function ready() {
+                    conn.on('data', function (data) {
+                        console.log("Data recieved");
+						if(data.slice(0,4)=="open"){
+								var row = data.slice(5,6);
+								var column = data.slice(6);
+								if(data.slice(4,5)=="1"){
+									rowOpen1 = row;
+									columnOpen1 = column; 
+								}
+								else{
+									rowOpen2 = row; 
+									columnOpen2 = column; 
+								}
+								
+								document.getElementById("card"+row+column).src = cards[row][column];
+							}
+						else{
+							switch (data) {
+								case "ready" :
+									player2Ready = true; 
+									checkIfBothAreReady(); 
+									break; 
+								case '2' :
+									introducePlayer(2);
+									mixingCards(); 
+									break; 
+								case "TurnCardsOver" :
+									setTimeout(TurnCardsOver, 2500);
+									break;
+								default:
+									document.getElementById("pictureplayer2").src = data+".jpg"; 
+									document.getElementById("fname2").value = data;
+									document.getElementById("fname2").readOnly = true;
+									break;
+							};
+						}
+                    });
+                    conn.on('close', function () {
+                        status.innerHTML = "Connection reset<br>Awaiting connection...";
+                        conn = null;
+                        start(true);
+                    });
+                }
+				
+				function signal(sigName) {
+                    if (conn && conn.open) {
+                        conn.send(sigName);
+                        console.log(sigName + " signal sent");
+                    } else {
+                        console.log('Connection is closed');
+                    }
+                }
+				
+				var input1 = document.getElementById("fname1");
+				var input2 = document.getElementById("fname2");
+				input1.addEventListener("keyup", function(event) {
+					if (event.keyCode === 13) {
+						introducePlayer(1); 
+					}
+				});
+				
+			
+
+				function introducePlayer(nr){
+					if(nr==1){
+							document.getElementById("outerLayoutPlayer1").style.borderColor = "rgb(212,175,55)";
+							document.getElementById("pictureplayer1").src = document.getElementById("fname1").value+".jpg"; 
+							document.getElementById("fname1").readOnly = true;
+							signal("1"); 
+							signal(document.getElementById("fname1").value);
+							player1Ready = true; 
+							signal("ready");
+							checkIfBothAreReady(); 
+					}
+					document.getElementById("player"+nr).style.backgroundImage = "url('Rahmen.png')"; 
+					document.getElementById("player"+nr).style.backgroundRepeat = "no-repeat"; 
+					document.getElementById("player"+nr).style.marginLeft = "21px"; 
+					document.getElementById("player"+nr).style.marginTop = "21px"; 
+					document.getElementById("player"+nr).style.visibility = "visible"; 
+					document.getElementById("pictureplayer"+nr).style.display = "inline-block"; 
+					document.getElementById("fname"+nr).readOnly = true;
+					document.getElementsByClassName("backgroundNametag")[nr-1].style.marginLeft = "30px"; 
+					document.getElementsByClassName("backgroundNametag")[nr-1].style.marginTop = "30px"; 
+				}
+				
+				
+				function creatingCards(){
+					cards = new Array(numberRows)
+					for (i=1;i<numberRows+1;i++) {
+						cards[i]=new Array(numberColumns);
+						for (j=1;j<numberColumns+1;j++) {
+							var random = Math.floor(Math.random() * cardsSrc.length) 
+							cards[i][j] = cardsSrc[random];
+							cardsSrc.splice(random, 1); 
+							console.log("i="+i+" j =" + j + " Karte=" + cards[i][j])
+						}
+					}	
+				}
+
+				function mixingCards(){
+					creatingCards(); 
+					for (a = 1; a <= numberRows; a++) {
+						for (b = 1; b <= numberColumns; b++) {
+							document.getElementById("card"+a+b).src = "R1.png"
+							signal("cards"+a+b+"="+cards[a][b]);
+						}
+					}
+				}
+				
+				function giveCardsOnClick(){
+				
+					document.getElementById("card11").onclick = function(){
+								myFunction(1,1);
+							};
+					document.getElementById("card12").onclick = function(){
+								myFunction(1,2);
+							};
+					document.getElementById("card13").onclick = function(){
+								myFunction(1,3);
+							};
+					document.getElementById("card14").onclick = function(){
+								myFunction(1,4);
+							};
+					document.getElementById("card15").onclick = function(){
+								myFunction(1,5);
+							};
+					document.getElementById("card16").onclick = function(){
+								myFunction(1,6);
+							};
+					document.getElementById("card17").onclick = function(){
+								myFunction(1,7);
+							};
+					document.getElementById("card18").onclick = function(){
+								myFunction(1,8);
+							};
+					document.getElementById("card19").onclick = function(){
+								myFunction(1,9);
+							};
+					document.getElementById("card110").onclick = function(){
+								myFunction(1,10);
+							};
+					document.getElementById("card111").onclick = function(){
+								myFunction(1,11);
+							};
+					
+					
+					document.getElementById("card21").onclick = function(){
+								myFunction(2,1);
+							};
+					document.getElementById("card22").onclick = function(){
+								myFunction(2,2);
+							};
+					document.getElementById("card23").onclick = function(){
+								myFunction(2,3);
+							};
+					document.getElementById("card24").onclick = function(){
+								myFunction(2,4);
+							};
+					document.getElementById("card25").onclick = function(){
+								myFunction(2,5);
+							};
+					document.getElementById("card26").onclick = function(){
+								myFunction(2,6);
+							};
+					document.getElementById("card27").onclick = function(){
+								myFunction(2,7);
+							};
+					document.getElementById("card28").onclick = function(){
+								myFunction(2,8);
+							};
+					document.getElementById("card29").onclick = function(){
+								myFunction(2,9);
+							};
+					document.getElementById("card210").onclick = function(){
+								myFunction(2,10);
+							};
+					document.getElementById("card211").onclick = function(){
+								myFunction(2,11);
+							};
+					
+					
+					document.getElementById("card31").onclick = function(){
+								myFunction(3,1);
+							};
+					document.getElementById("card32").onclick = function(){
+								myFunction(3,2);
+							};
+					document.getElementById("card33").onclick = function(){
+								myFunction(3,3);
+							};
+					document.getElementById("card34").onclick = function(){
+								myFunction(3,4);
+							};
+					document.getElementById("card35").onclick = function(){
+								myFunction(3,5);
+							};
+					document.getElementById("card36").onclick = function(){
+								myFunction(3,6);
+							};
+					document.getElementById("card37").onclick = function(){
+								myFunction(3,7);
+							};
+					document.getElementById("card38").onclick = function(){
+								myFunction(3,8);
+							};
+					document.getElementById("card39").onclick = function(){
+								myFunction(3,9);
+							};
+					document.getElementById("card310").onclick = function(){
+								myFunction(3,10);
+							};
+					document.getElementById("card311").onclick = function(){
+								myFunction(3,11);
+							};
+					
+					
+					document.getElementById("card41").onclick = function(){
+								myFunction(4,1);
+							};
+					document.getElementById("card42").onclick = function(){
+								myFunction(4,2);
+							};
+					document.getElementById("card43").onclick = function(){
+								myFunction(4,3);
+							};
+					document.getElementById("card44").onclick = function(){
+								myFunction(4,4);
+							};
+					document.getElementById("card45").onclick = function(){
+								myFunction(4,5);
+							};
+					document.getElementById("card46").onclick = function(){
+								myFunction(4,6);
+							};
+					document.getElementById("card47").onclick = function(){
+								myFunction(4,7);
+							};
+					document.getElementById("card48").onclick = function(){
+								myFunction(4,8);
+							};
+					document.getElementById("card49").onclick = function(){
+								myFunction(4,9);
+							};
+					document.getElementById("card410").onclick = function(){
+								myFunction(4,10);
+							};
+					document.getElementById("card411").onclick = function(){
+								myFunction(4,11);
+							};
+							
+					
+					document.getElementById("card51").onclick = function(){
+								myFunction(5,1);
+							};
+					document.getElementById("card52").onclick = function(){
+								myFunction(5,2);
+							};
+					document.getElementById("card53").onclick = function(){
+								myFunction(5,3);
+							};
+					document.getElementById("card54").onclick = function(){
+								myFunction(5,4);
+							};
+					document.getElementById("card55").onclick = function(){
+								myFunction(5,5);
+							};
+					document.getElementById("card56").onclick = function(){
+								myFunction(5,6);
+							};
+					document.getElementById("card57").onclick = function(){
+								myFunction(5,7);
+							};
+					document.getElementById("card58").onclick = function(){
+								myFunction(5,8);
+							};
+					document.getElementById("card59").onclick = function(){
+								myFunction(5,9);
+							};
+					document.getElementById("card510").onclick = function(){
+								myFunction(5,10);
+							};
+					document.getElementById("card511").onclick = function(){
+								myFunction(5,11);
+							};
+							
+					document.getElementById("card61").onclick = function(){
+								myFunction(6,1);
+							};
+					document.getElementById("card62").onclick = function(){
+								myFunction(6,2);
+							};
+					document.getElementById("card63").onclick = function(){
+								myFunction(6,3);
+							};
+					document.getElementById("card64").onclick = function(){
+								myFunction(6,4);
+							};
+					document.getElementById("card65").onclick = function(){
+								myFunction(6,5);
+							};
+					document.getElementById("card66").onclick = function(){
+								myFunction(6,6);
+							};
+					document.getElementById("card67").onclick = function(){
+								myFunction(6,7);
+							};
+					document.getElementById("card68").onclick = function(){
+								myFunction(6,8);
+							};
+					document.getElementById("card69").onclick = function(){
+								myFunction(6,9);
+							};
+					document.getElementById("card610").onclick = function(){
+								myFunction(6,10);
+							};
+					document.getElementById("card611").onclick = function(){
+								myFunction(6,11);
+							};
+
+
+				
+				}
+				
+				
+				function myFunction(row, column) {
+					if(openCards>1 || (row === rowOpen1 && column === columnOpen1) || (row === rowOpen2 && column === columnOpen2 || player1Active === false) ){
+	 
+					}
+					else{
+						if(openCards==0){
+							rowOpen1 = row;
+							columnOpen1 = column;
+							signal("open1"+row+column);
+						}
+						if(openCards==1){
+							rowOpen2 = row;
+							columnOpen2 = column;
+							signal("open2"+row+column);
+						}
+
+						document.getElementById("card"+row+column).src = cards[row][column];
+						openCards+=1; 
+						if(openCards==2){
+							setTimeout(TurnCardsOver, 2500);
+							signal("TurnCardsOver"); 
+						}
+
+					}
+				}
+				
+				function TurnCardsOver () {
+					if(cards[rowOpen1][columnOpen1].slice(0,-5) === cards[rowOpen2][columnOpen2].slice(0,-5)){
+						cards[rowOpen1][columnOpen1] = "";
+						cards[rowOpen2][columnOpen2] = "";
+						document.getElementById("card"+rowOpen1+columnOpen1).style.visibility = "hidden"; 
+						document.getElementById("card"+rowOpen2+columnOpen2).style.visibility = "hidden"; 
+						document.getElementById("card"+rowOpen1+columnOpen1).onclick = false;
+						document.getElementById("card"+rowOpen2+columnOpen2).onclick = false; 
+						if(player1Active == true){
+							scorePlayer1++;
+							AdjustScorePlayer(1);
+						}
+						if(player2Active == true){
+							scorePlayer2++;
+							AdjustScorePlayer(2);
+						}
+					} 
+					else{
+						document.getElementById("card"+rowOpen1+columnOpen1).src = "R1.png";
+						document.getElementById("card"+rowOpen2+columnOpen2).src = "R1.png";
+						if(player1Active == true){
+							document.getElementById("outerLayoutPlayer1").style.borderColor = "transparent"; 
+							document.getElementById("outerLayoutPlayer2").style.borderColor = "rgb(212,175,55)"; 
+						}
+						else{
+							document.getElementById("outerLayoutPlayer2").style.borderColor = "transparent"; 
+							document.getElementById("outerLayoutPlayer1").style.borderColor = "rgb(212,175,55)"; 
+						}
+						player1Active = !player1Active;
+						player2Active = !player2Active; 
+						
+						
+					}
+
+					rowOpen1 = "";
+					columnOpen1 = "";
+					rowOpen2 = "";
+					columnOpen2 = "";
+					openCards=0;
+				}
+				
+				function AdjustScorePlayer(playerNr){
+					if(playerNr==1){
+						if(FivePointsPlayer1>3){
+							rowPointsPlayer1 = 2; 
+						}
+						if(scorePlayer1>1){
+							var parent = document.getElementById("pointCounter1"+rowPointsPlayer1);
+							var child = document.getElementById("PtsPly1");
+							parent.removeChild(child);
+						}
+						if(scorePlayer1==5){
+							FivePointsPlayer1+=1; 
+							var img1 = document.createElement("img"); 
+							img1.setAttribute("src", scorePlayer1+"Pt.png");
+							img1.style.marginLeft ="3.6px";
+							img1.setAttribute("id","SavePoints"+FivePointsPlayer1); 
+							document.getElementById("pointCounter1"+rowPointsPlayer1).appendChild(img1); 
+							scorePlayer1 = 0; 
+						}
+						else{
+							var img1 = document.createElement("img"); 
+							img1.setAttribute("src", scorePlayer1+"Pt.png");
+							img1.style.marginLeft ="3.6px";
+							img1.setAttribute("id","PtsPly1"); 
+							document.getElementById("pointCounter1"+rowPointsPlayer1).appendChild(img1); 
+						}
+					}
+					if(playerNr==2){
+						if(FivePointsPlayer2>3){
+							rowPointsPlayer2 = 2; 
+						}
+						if(scorePlayer2>1){
+							var parent = document.getElementById("pointCounter2"+rowPointsPlayer2);
+							var child = document.getElementById("PtsPly2");
+							parent.removeChild(child);
+						}
+						if(scorePlayer2==5){
+							FivePointsPlayer2+=1; 
+							var img2 = document.createElement("img"); 
+							img2.setAttribute("src", scorePlayer2+"Pt.png");
+							img2.style.marginLeft ="3.6px";
+							img2.setAttribute("id","SavePoints"+FivePointsPlayer2); 
+							document.getElementById("pointCounter2"+rowPointsPlayer2).appendChild(img2); 
+							scorePlayer2 = 0; 
+						}
+						else{
+							var img2 = document.createElement("img"); 
+							img2.setAttribute("src", scorePlayer2+"Pt.png");
+							img2.style.marginLeft ="3.6px";
+							img2.setAttribute("id","PtsPly2"); 
+							document.getElementById("pointCounter2"+rowPointsPlayer2).appendChild(img2); 
+						}
+					
+					}
+				}
+
+				function checkIfBothAreReady(){
+					if(player1Ready == true && player2Ready == true){
+						document.getElementById("background").style.visibility = "visible"; 
+					}
+				
+				}
+				
+                initialize();
+            })();
+        </script>
+    </body>
+</html>
