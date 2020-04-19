@@ -214,6 +214,7 @@
 
 				var numberRows = 6;
 				var numberColumns = 11;
+				var playerNames = new Array( "Moritz", "Pascal"); 
 				
 				//only up here you need to change the variables
 				
@@ -313,6 +314,10 @@
 								case "TurnCardsOver" :
 									setTimeout(TurnCardsOver, 2500);
 									break;
+								case "Muster" :
+									document.getElementById("pictureplayer1").src = data+".jpg"; 
+									document.getElementById("fname1").value = data.slice(6);
+									document.getElementById("fname1").readOnly = true;
 								default:
 									document.getElementById("pictureplayer2").src = data+".jpg"; 
 									document.getElementById("fname2").value = data;
@@ -350,10 +355,16 @@
 				function introducePlayer(nr){
 					if(nr==1){
 							document.getElementById("outerLayoutPlayer1").style.borderColor = "rgb(212,175,55)";
-							document.getElementById("pictureplayer1").src = document.getElementById("fname1").value+".jpg"; 
 							document.getElementById("fname1").readOnly = true;
 							signal("1"); 
-							signal(document.getElementById("fname1").value);
+							if(playerNames.(document.getElementById("fname1").value)){
+								document.getElementById("pictureplayer1").src = document.getElementById("fname1").value+".jpg"; 
+								signal(document.getElementById("fname1").value); 
+							}
+							else{
+								document.getElementById("pictureplayer1").src = "Muster.jpg"; 
+								signal("Muster"+document.getElementById("fname1").value); 
+							}
 							player1Ready = true; 
 							signal("ready");
 							checkIfBothAreReady(); 
