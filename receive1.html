@@ -357,7 +357,7 @@
 							document.getElementById("outerLayoutPlayer1").style.borderColor = "rgb(212,175,55)";
 							document.getElementById("fname1").readOnly = true;
 							signal("1"); 
-							if(playerNames.(document.getElementById("fname1").value)){
+							if(playerNames.includes(document.getElementById("fname1").value)){
 								document.getElementById("pictureplayer1").src = document.getElementById("fname1").value+".jpg"; 
 								signal(document.getElementById("fname1").value); 
 							}

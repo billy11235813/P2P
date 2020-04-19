@@ -378,7 +378,7 @@ var peer = new Peer({debug: 3,
 					else{
 						document.getElementById("fname2").readOnly = true;
 						signal("2"); 
-						if(playerNames.(document.getElementById("fname2").value)){
+						if(playerNames.includes(document.getElementById("fname2").value)){
 							document.getElementById("pictureplayer2").src = document.getElementById("fname2").value+".jpg"; 
 							signal(document.getElementById("fname2").value); 
 						}
@@ -386,9 +386,6 @@ var peer = new Peer({debug: 3,
 							document.getElementById("pictureplayer2").src = "Muster.jpg"; 
 							signal("Muster"+document.getElementById("fname2").value); 
 						}
-						
-						
-						
 						player2Ready = true; 
 						signal("ready"); 
 						checkIfBothAreReady(); 
