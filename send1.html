@@ -324,14 +324,17 @@ var peer = new Peer({debug: 3,
 									case "TurnCardsOver" :
 										setTimeout(TurnCardsOver, 2500);
 										break; 
-									case "Muster" :
-										document.getElementById("pictureplayer1").src = data+".jpg"; 
-										document.getElementById("fname1").value = data.slice(6);
-										document.getElementById("fname1").readOnly = true;
-									default:
-										document.getElementById("pictureplayer1").src = data+".jpg"; 
-										document.getElementById("fname1").value = data;
-										document.getElementById("fname1").readOnly = true;
+									default: //here the signal can only be the intro of the name field
+										if(data.slice(0,6)=="Muster"{
+											document.getElementById("pictureplayer1").src = data+".jpg"; 
+											document.getElementById("fname1").value = data.slice(6);
+											document.getElementById("fname1").readOnly = true;
+										}
+										else{
+											document.getElementById("pictureplayer1").src = data+".jpg"; 
+											document.getElementById("fname1").value = data;
+											document.getElementById("fname1").readOnly = true;
+										}
 										break;
 								};
 							}
